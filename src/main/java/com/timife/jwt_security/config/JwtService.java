@@ -26,6 +26,7 @@ public class JwtService {
         return extractClaim(token, Claims::getSubject);
     }
 
+    //Generate token for authentication.
     public String generateToken(
             Map<String, Object> extraClaims,
             UserDetails userDetails
@@ -40,6 +41,7 @@ public class JwtService {
                 .compact();
     }
 
+    //Needed when no extra claim is present
     public String generateToken(UserDetails userDetails){
         return generateToken(new HashMap<>(), userDetails);
     }
@@ -53,15 +55,19 @@ public class JwtService {
         return extractExpiration(token).before(new Date());
     }
 
+    //returns the expiration time of the token
     private Date extractExpiration(String token) {
         return extractClaim(token, Claims::getExpiration);
     }
 
+    //Extract a claim for a particular user from the token, claims can include expiration time
+    // and so on, information about a current user, including username, password and so on.
     public <T> T extractClaim(String token, Function<Claims, T> claimsResolver){
         final Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);
     }
 
+    //extract
     private Claims extractAllClaims(String token){
         return Jwts.parserBuilder()
                 .setSigningKey(getSignInKey()) //handles the signature part of the jwt and verifies the client is legit

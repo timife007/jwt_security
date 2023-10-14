@@ -27,7 +27,7 @@ public class SecurityConfig {
                 .csrf()
                 .disable()
                 .authorizeHttpRequests()
-                .requestMatchers("")  ///White listing, no need for authorization for requests like login.
+                .requestMatchers("/api/v1/auth/**")  ///White listing, no need for authorization for requests like login.
                 .permitAll()
                 .anyRequest()
                 .authenticated()

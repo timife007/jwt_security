@@ -1,5 +1,7 @@
-package com.timife.jwt_security.auth;
+package com.timife.jwt_security.auth.controllers;
 
+import com.timife.jwt_security.auth.AuthenticationResponse;
+import com.timife.jwt_security.auth.AuthenticationService;
 import com.timife.jwt_security.auth.requests.AuthenticationRequest;
 import com.timife.jwt_security.auth.requests.RegisterRequest;
 import lombok.RequiredArgsConstructor;

@@ -1,4 +1,4 @@
-package com.timife.jwt_security.auth;
+package com.timife.jwt_security.auth.requests;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
