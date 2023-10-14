@@ -30,7 +30,7 @@ public class User implements UserDetails {
 
     private String email;
 
-    private String password;        //overriden by default : getPassword
+    private String password;        //override by default : getPassword
 
     @Enumerated(EnumType.STRING)
     private Role role;
@@ -46,12 +46,17 @@ public class User implements UserDetails {
     }
 
     @Override
+    public String getPassword(){ //Optional, overrides the password by default if name is password, else, mandatory to override this.
+        return password;
+    }
+
+    @Override
     public boolean isAccountNonExpired() {
         return true;
     }
 
     @Override
-    public boolean isAccountNonLocked() {
+    public boolean isAccountNonLocked(){
         return true;
     }
 
@@ -64,4 +69,5 @@ public class User implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
 }
